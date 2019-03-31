@@ -43,6 +43,19 @@
             </command>
          </toolbar>
       </menuContribution>
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               id="io.github.junxworks.tools.menus.sampleMenu"
+               label="Sample Menu"
+               mnemonic="M">
+            <command
+                  commandId="io.github.junxworks.tools.commands.sampleCommand"
+                  id="io.github.junxworks.tools.menus.sampleCommand"
+                  mnemonic="S">
+            </command>
+         </menu>
+      </menuContribution>
    </extension>
    <extension
          point="org.eclipse.ui.popupMenus">
@@ -57,25 +70,47 @@
             <separator
                   name="packageOp">
             </separator>
+             <separator
+                  name="configOp">
+            </separator>
+             <separator
+                  name="about">
+            </separator>
          </menu>
          <action
-               class="io.github.junxworks.tools.actions.CreatePojoAction"
+               class="io.github.junxworks.tools.actions.CreateMetadataAction"
                icon="icons/ctrl/addPojo.png"
-               id="io.github.junxworks.tools.actions.CreatePojoAction"
-               label="创建实体类"
+               id="io.github.junxworks.tools.actions.CreateMetadataAction"
+               label="创建元数据"
                menubarPath="io.github.junxworks.tools.junxmenu/packageOp">
          </action>
          <action
-               class="io.github.junxworks.tools.actions.AddServiceAction"
+               class="io.github.junxworks.tools.actions.CreatePojoAction"
                icon="icons/ctrl/add.png"
-               id="io.github.junxworks.tools.action3"
-               label="新增服务">
+               id="io.github.junxworks.tools.actions.CreatePojo"
+               label="创建Pojo"
+               menubarPath="io.github.junxworks.tools.junxmenu/packageOp">
          </action>
          <action
-               class="io.github.junxworks.tools.actions.CreateEntityAction"
-               icon="icons/ctrl/add.png"
-               id="io.github.junxworks.tools.actions.CreateEntityAction"
-               label="手动添加实体类">
+               class="io.github.junxworks.tools.actions.MapperTemlateConfigAction"
+               icon="icons/config.png"
+               id="io.github.junxworks.tools.actions.MapperTemlateConfigAction"
+               label="配置Mapper模板"
+               menubarPath="io.github.junxworks.tools.junxmenu/configOp">
+         </action>
+         <action
+               class="io.github.junxworks.tools.actions.MetadataTemlateConfigAction"
+               icon="icons/config.png"
+               id="io.github.junxworks.tools.actions.MetadataTemlateConfigAction"
+               label="配置元数据模板"
+               menubarPath="io.github.junxworks.tools.junxmenu/configOp">
+         </action>
+          <action
+               class="io.github.junxworks.tools.actions.AboutAction"
+               icon="icons/config.png"
+               id="io.github.junxworks.tools.actions.AboutAction"
+               label="插件说明"
+               menubarPath="io.github.junxworks.tools.junxmenu/about">
          </action>
       </objectContribution>
       <objectContribution
@@ -91,14 +126,12 @@
             </separator>
          </menu>
          <action
-               class="io.github.junxworks.tools.actions.UpdatePojoAction"
+               class="io.github.junxworks.tools.actions.UpdateMetadataAction"
                icon="icons/ctrl/update.png"
-               id="io.github.junxworks.tools.actions.UpdatePojoAction"
-               label="更新实体类"
+               id="io.github.junxworks.tools.actions.UpdateMetadataAction"
+               label="更新元数据"
                menubarPath="io.github.junxworks.tools.javaObjectMenu/objectOp">
          </action>
       </objectContribution>
    </extension>
-
-
 </plugin>

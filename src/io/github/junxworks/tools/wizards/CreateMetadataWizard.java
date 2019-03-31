@@ -8,6 +8,7 @@ import java.util.Map;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.jdt.core.IPackageFragment;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
@@ -17,22 +18,24 @@ import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.internal.Workbench;
 
+import io.github.junxworks.tools.JunxworksPlugin;
 import io.github.junxworks.tools.WorkspaceUtils;
-import io.github.junxworks.tools.pojo.db.utils.BeanCreatAction;
+import io.github.junxworks.tools.utils.BeanCreatUtils;
 
 @SuppressWarnings("restriction")
-public class AddPojoWizard extends Wizard implements INewWizard {
-	private PojoConfWizardPage page;
+public class CreateMetadataWizard extends Wizard implements INewWizard {
+	private MetadataPage page;
 	private ISelection selection;
-
-	public AddPojoWizard() {
+	private IPreferenceStore store;
+	public CreateMetadataWizard() {
 		super();
 		setNeedsProgressMonitor(true);
 	}
 	
 	public void addPages() {
-		page = new PojoConfWizardPage(selection);
+		page = new MetadataPage(selection);
 		addPage(page);
+		store = JunxworksPlugin.getDefault().getPreferenceStore();
 	}
 	
 	public boolean performFinish() {
@@ -47,7 +50,7 @@ public class AddPojoWizard extends Wizard implements INewWizard {
 				}
 			}
 			if(tableNames != null && tableNames.size()>0){
-				boolean ret = BeanCreatAction.creatBean(path,packageName,tableNames);
+				boolean ret = BeanCreatUtils.creatBean(path,packageName,tableNames);
 				if(ret){
 					MessageDialog.openInformation(page.getShell(),"提示信息","生成实体成功");
 					WorkspaceUtils.getCurrentResource().refreshLocal(IResource.DEPTH_ONE, null);

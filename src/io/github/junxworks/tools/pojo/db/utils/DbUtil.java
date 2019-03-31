@@ -13,6 +13,7 @@ import io.github.junxworks.tools.pojo.db.MySqlDatabase;
 import io.github.junxworks.tools.pojo.db.OracleDatabase;
 import io.github.junxworks.tools.pojo.db.model.DatabaseElement;
 import io.github.junxworks.tools.pojo.db.model.Table;
+import io.github.junxworks.tools.utils.BeanCreatUtils;
 
 public class DbUtil {
 	/**
@@ -81,7 +82,7 @@ public class DbUtil {
 		de.setPassword("123456");
 		de.setSchema("test");
 		Connection con = DbUtil.getConnection("mysql", "jdbc:mysql://10.111.125.137:3306/test", "root", "123456");
-		List<Table> tables = BeanCreatAction.getAllTableName("");
+		List<Table> tables = BeanCreatUtils.getAllTableName("");
 		List<String> tableNames = new ArrayList<String>();
 		for (Table table : tables) {
 			
@@ -89,6 +90,6 @@ public class DbUtil {
 		tableNames.add("user");
 		DataBase db = DatabaseFactory.creatDataBase(de);
 		List<Table> tablies = db.getTables(de.getSchema(), tableNames);
-		BeanCreatAction.creatBean("C:\\Users\\levovo\\git\\BDPTools\\src\\com\\ydtf\\bdp\\tools\\pojo\\db\\utils\\", "package io.github.junxworks.pojo.db.model", tableNames);
+		BeanCreatUtils.creatBean("C:\\Users\\levovo\\git\\BDPTools\\src\\com\\ydtf\\bdp\\tools\\pojo\\db\\utils\\", "package io.github.junxworks.pojo.db.model", tableNames);
 	}
 }

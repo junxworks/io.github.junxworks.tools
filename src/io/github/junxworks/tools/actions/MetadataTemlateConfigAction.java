@@ -2,8 +2,13 @@ package io.github.junxworks.tools.actions;
 
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkbenchWindowActionDelegate;
+import org.eclipse.ui.PlatformUI;
+
+import io.github.junxworks.tools.wizards.MetadataTemlpateWizard;
+
 import org.eclipse.jface.dialogs.MessageDialog;
 
 /**
@@ -14,12 +19,12 @@ import org.eclipse.jface.dialogs.MessageDialog;
  * delegated to it.
  * @see IWorkbenchWindowActionDelegate
  */
-public class SampleAction implements IWorkbenchWindowActionDelegate {
+public class MetadataTemlateConfigAction implements IWorkbenchWindowActionDelegate {
 	private IWorkbenchWindow window;
 	/**
 	 * The constructor.
 	 */
-	public SampleAction() {
+	public MetadataTemlateConfigAction() {
 	}
 
 	/**
@@ -29,10 +34,10 @@ public class SampleAction implements IWorkbenchWindowActionDelegate {
 	 * @see IWorkbenchWindowActionDelegate#run
 	 */
 	public void run(IAction action) {
-		MessageDialog.openInformation(
-			window.getShell(),
-			"Junx",
-			"Hello, Eclipse world,Junx1111");
+		MetadataTemlpateWizard wizard = new MetadataTemlpateWizard();
+		wizard.init(PlatformUI.getWorkbench(), null);
+		WizardDialog dialog = new WizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
+		dialog.open();
 	}
 
 	/**

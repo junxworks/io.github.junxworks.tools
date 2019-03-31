@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.eclipse.jface.dialogs.IDialogPage;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.viewers.CellEditor.LayoutData;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
@@ -14,9 +13,10 @@ import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.KeyAdapter;
-import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
@@ -28,12 +28,8 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.wb.swt.SWTResourceManager;
 
 import io.github.junxworks.tools.TableModel;
-import io.github.junxworks.tools.pojo.db.utils.BeanCreatAction;
+import io.github.junxworks.tools.utils.BeanCreatUtils;
 import swing2swt.layout.BorderLayout;
-
-import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
 
 /**
  * The "New" wizard page allows setting the container for the new file as well
@@ -41,8 +37,7 @@ import org.eclipse.swt.events.SelectionEvent;
  * OR with the extension that matches the expected one (java).
  */
 
-@SuppressWarnings("restriction")
-public class PojoConfWizardPage extends WizardPage {
+public class MetadataPage extends WizardPage {
 	private Text text;
 	private Table table;
 	protected TableViewer tableViewer;
@@ -52,7 +47,7 @@ public class PojoConfWizardPage extends WizardPage {
 	 * 
 	 * @param pageName
 	 */
-	public PojoConfWizardPage(ISelection selection) {
+	public MetadataPage(ISelection selection) {
 		super("wizardPage");
 		setTitle("生成Pojo类");
 		setDescription("根据选中的表，生成Pojo实体对象");
@@ -205,7 +200,7 @@ class DaoTableModel {
 
 	public TableModel[] getModels() {
 		try {
-			List<io.github.junxworks.tools.pojo.db.model.Table> tableList = BeanCreatAction.getAllTableName(this.tableName);
+			List<io.github.junxworks.tools.pojo.db.model.Table> tableList = BeanCreatUtils.getAllTableName(this.tableName);
 			if (tableList != null && tableList.size() > 0) {
 				TableModel[] rtn = new TableModel[tableList.size()];
 				for (int i = 0; i < tableList.size(); i++) {

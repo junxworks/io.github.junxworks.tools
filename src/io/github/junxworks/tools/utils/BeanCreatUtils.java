@@ -1,4 +1,4 @@
-package io.github.junxworks.tools.pojo.db.utils;
+package io.github.junxworks.tools.utils;
 
 
 import java.io.FileOutputStream;
@@ -20,6 +20,7 @@ import io.github.junxworks.tools.pojo.db.DataBase;
 import io.github.junxworks.tools.pojo.db.DatabaseFactory;
 import io.github.junxworks.tools.pojo.db.model.DatabaseElement;
 import io.github.junxworks.tools.pojo.db.model.Table;
+import io.github.junxworks.tools.pojo.db.utils.StringUtil;
 import freemarker.cache.TemplateLoader;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -30,7 +31,7 @@ import freemarker.template.Template;
  * @author levovo
  *
  */
-public class BeanCreatAction {
+public class BeanCreatUtils {
 	/**
 	 * 生成Pojo类
 	 * 

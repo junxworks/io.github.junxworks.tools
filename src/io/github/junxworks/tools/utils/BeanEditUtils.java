@@ -1,4 +1,4 @@
-package io.github.junxworks.tools.pojo.db.utils;
+package io.github.junxworks.tools.utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +17,7 @@ import io.github.junxworks.tools.pojo.db.DatabaseFactory;
 import io.github.junxworks.tools.pojo.db.model.Column;
 import io.github.junxworks.tools.pojo.db.model.DatabaseElement;
 import io.github.junxworks.tools.pojo.db.model.Table;
+import io.github.junxworks.tools.pojo.db.utils.StringUtil;
 
 /**
  * Pojo类修改
@@ -24,10 +25,10 @@ import io.github.junxworks.tools.pojo.db.model.Table;
  * @author levovo
  *
  */
-public class BeanEditAction {
+public class BeanEditUtils {
 	public static boolean editBean(CompilationUnit unit) throws Exception {
 
-		DatabaseElement de = BeanCreatAction.getDatabaseElement();
+		DatabaseElement de = BeanCreatUtils.getDatabaseElement();
 		if (StringUtil.isEmpty(de.getType()) || StringUtil.isEmpty(de.getUrl()) || StringUtil.isEmpty(de.getUsername())
 				|| StringUtil.isEmpty(de.getPassword())) {
 			throw new Exception("缺少数据库连接配置参数");

@@ -49,7 +49,7 @@ import swing2swt.layout.BorderLayout;
  */
 
 @SuppressWarnings("restriction")
-public class EntityConfWizardPage extends WizardPage {
+public class PojoPage extends WizardPage {
 
 	private Text text_1;
 	private Table table;
@@ -60,7 +60,7 @@ public class EntityConfWizardPage extends WizardPage {
 	 * 
 	 * @param pageName
 	 */
-	public EntityConfWizardPage(ISelection selection) {
+	public PojoPage(ISelection selection) {
 		super("wizardPage");
 		setTitle("创建实体类");
 		setDescription("编辑实体类\r\n注意：实体类名,数据元为必填项！！");
