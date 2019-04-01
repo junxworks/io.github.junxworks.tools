@@ -1,16 +1,16 @@
 package io.github.junxworks.tools.actions;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkbenchWindowActionDelegate;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.handlers.HandlerUtil;
-
-import io.github.junxworks.tools.wizards.MetadataTemlpateWizard;
-
-import org.eclipse.jface.dialogs.MessageDialog;
 
 /**
  * Our sample action implements workbench action delegate. The action proxy will
@@ -36,7 +36,16 @@ public class AboutAction implements IWorkbenchWindowActionDelegate {
 	 * @see IWorkbenchWindowActionDelegate#run
 	 */
 	public void run(IAction action) {
-		MessageDialog.openInformation(window.getShell(), "Junx", "Hello, Eclipse world");
+		try (InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("/io/github/junxworks/tools/actions/about.txt"); BufferedReader br = new BufferedReader(new InputStreamReader(in));) {
+			StringBuffer buffer = new StringBuffer();
+			String line = "";
+			while ((line = br.readLine()) != null) {
+				buffer.append(line);
+			}
+			MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Junx插件说明", buffer.toString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
