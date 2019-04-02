@@ -3,6 +3,8 @@ package io.github.junxworks.tools.pojo.db.utils;
 import java.io.File;
 import java.util.Locale;
 
+import org.apache.commons.lang.StringUtils;
+
 public class StringUtil {
 
 	public static String capitalize(String str) {
@@ -39,13 +41,37 @@ public class StringUtil {
 	}
 
 	public static String getCamelCaseString(String inputString, boolean firstCharacterUppercase) {
-		StringBuilder sb = new StringBuilder();
-		
-		sb.append(inputString.toLowerCase());// 简化java属性，让其跟数据库字段名字保持一致
+		if (inputString.contains("-")) {
+			inputString = underlineToCamel(inputString, '-');
+		}
+		if (inputString.contains("_")) {
+			inputString = underlineToCamel(inputString, '_');
+		}
+		StringBuilder sb = new StringBuilder(inputString);
 		if (firstCharacterUppercase) {
 			sb.setCharAt(0, Character.toUpperCase(sb.charAt(0)));
+		} else {
+			sb.setCharAt(0, Character.toLowerCase(sb.charAt(0)));
 		}
+		return sb.toString();
+	}
 
+	public static String underlineToCamel(String str, char ch) {
+		if (StringUtils.isBlank(str)) {
+			return "";
+		}
+		int len = str.length();
+		StringBuilder sb = new StringBuilder(len);
+		for (int i = 0; i < len; i++) {
+			char c = str.charAt(i);
+			if (c == ch) {
+				if (++i < len) {
+					sb.append(Character.toUpperCase(str.charAt(i)));
+				}
+			} else {
+				sb.append(c);
+			}
+		}
 		return sb.toString();
 	}
 

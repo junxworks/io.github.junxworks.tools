@@ -35,11 +35,10 @@ public class MetadataTemplatePage extends WizardPage {
 	 * @see IDialogPage#createControl(Composite)
 	 */
 	public void createControl(Composite parent) {
-		String template = JunxworksPlugin.getDefault().getPreferenceStore()
-				.getString(CreateMetadataAction.METADATA_CONFIG_ID);
+		String template = JunxworksPlugin.getDefault().getPreferenceStore().getString(CreateMetadataAction.METADATA_CONFIG_ID);
 		Composite composite = new Composite(parent, SWT.NONE);
 		composite.setLayoutData(BorderLayout.NORTH);
-		text = new Text(composite, SWT.BORDER | SWT.MULTI);
+		text = new Text(composite, SWT.BORDER | SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 		text.setBounds(0, 0, 800, 400);
 		text.setText(template);
 		setControl(composite);
