@@ -85,10 +85,10 @@
                menubarPath="io.github.junxworks.tools.junxmenu/packageOp">
          </action>
          <action
-               class="io.github.junxworks.tools.actions.CreatePojoAction"
+               class="io.github.junxworks.tools.actions.CreateObjectAction"
                icon="icons/ctrl/add.png"
-               id="io.github.junxworks.tools.actions.CreatePojo"
-               label="创建Pojo"
+               id="io.github.junxworks.tools.actions.CreateObjectAction"
+               label="创建Pojo对象"
                menubarPath="io.github.junxworks.tools.junxmenu/packageOp">
          </action>
          <action
