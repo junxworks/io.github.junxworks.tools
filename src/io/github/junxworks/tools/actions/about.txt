@@ -1,3 +1,3 @@
-æ’ä»¶é‡‡ç”¨freemarkeræ¨¡æ¿å¼•æ“æ¥ç”Ÿæˆä¸€ç³»åˆ—æ–‡ä»¶ï¼Œæ”¯æŒæ‰€æœ‰freemarkerè¯­æ³•ã€‚å†…ç½®å˜é‡ï¼špackage åŒ…è·¯å¾„ï¼ŒTableæ•°æ®åº“è¡¨æ¨¡å‹ï¼ˆè¡¨ç»“æ„æ˜¯ä»æ•°æ®åº“è¯»å–å‡ºæ¥çš„ï¼‰ã€‚
-Tableæ¨¡å‹å‚è€ƒhttps://github.com/junxworks/io.github.junxworks.tools/blob/master/src/io/github/junxworks/tools/pojo/db/model/Table.java
-ï¼Œå¦å¤–è¿˜æœ‰Columnæ¨¡å‹ï¼šhttps://github.com/junxworks/io.github.junxworks.tools/blob/master/src/io/github/junxworks/tools/pojo/db/model/Column.java
+²å¼ş²ÉÓÃfreemarkerÄ£°åÒıÇæÀ´Éú³ÉÒ»ÏµÁĞÎÄ¼ş£¬Ö§³ÖËùÓĞfreemarkerÓï·¨¡£ÄÚÖÃ±äÁ¿£ºpackage °üÂ·¾¶£¬TableÊı¾İ¿â±íÄ£ĞÍ£¨±í½á¹¹ÊÇ´ÓÊı¾İ¿â¶ÁÈ¡³öÀ´µÄ£©¡£
+TableÄ£ĞÍ²Î¿¼https://github.com/junxworks/io.github.junxworks.tools/blob/master/src/io/github/junxworks/tools/pojo/db/model/Table.java
+£¬ÁíÍâ»¹ÓĞColumnÄ£ĞÍ£ºhttps://github.com/junxworks/io.github.junxworks.tools/blob/master/src/io/github/junxworks/tools/pojo/db/model/Column.java

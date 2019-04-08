@@ -85,6 +85,13 @@
                menubarPath="io.github.junxworks.tools.junxmenu/packageOp">
          </action>
          <action
+               class="io.github.junxworks.tools.actions.CreateMapperAction"
+               icon="icons/ctrl/add.png"
+               id="io.github.junxworks.tools.actions.CreateMapperAction"
+               label="创建Mapper对象"
+               menubarPath="io.github.junxworks.tools.junxmenu/packageOp">
+         </action>
+         <action
                class="io.github.junxworks.tools.actions.CreateObjectAction"
                icon="icons/ctrl/add.png"
                id="io.github.junxworks.tools.actions.CreateObjectAction"

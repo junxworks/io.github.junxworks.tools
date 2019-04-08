@@ -1,13 +1,13 @@
 package io.github.junxworks.tools.actions;
 
+import io.github.junxworks.tools.wizards.MapperTemlpateWizard;
+
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkbenchWindowActionDelegate;
 import org.eclipse.ui.PlatformUI;
-
-import io.github.junxworks.tools.wizards.MetadataTemlpateWizard;
 
 /**
  * Our sample action implements workbench action delegate. The action proxy will
@@ -31,7 +31,7 @@ public class MapperTemlateConfigAction implements IWorkbenchWindowActionDelegate
 	 * @see IWorkbenchWindowActionDelegate#run
 	 */
 	public void run(IAction action) {
-		MetadataTemlpateWizard wizard = new MetadataTemlpateWizard();
+		MapperTemlpateWizard wizard = new MapperTemlpateWizard();
 		wizard.init(PlatformUI.getWorkbench(), null);
 		WizardDialog dialog = new WizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
 		dialog.open();
