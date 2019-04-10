@@ -65,7 +65,7 @@
          <menu
                icon="icons/ctrl/J.png"
                id="io.github.junxworks.tools.junxmenu"
-               label="junx"
+               label="Junx"
                path="additions">
             <separator
                   name="packageOp">
