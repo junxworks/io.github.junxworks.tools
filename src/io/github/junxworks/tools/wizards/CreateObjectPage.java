@@ -79,7 +79,7 @@ public class CreateObjectPage extends WizardPage {
 	public CreateObjectPage(ISelection selection) {
 		super("wizardPage");
 		setTitle("创建Pojo类");
-		setDescription("注意： 类名为必填项，从前端到后端的数据传输对象为Dto对象，\r\n类名以Dto结尾。从后端到前端数据传输对象为Vo对象，类名以Vo结尾。");
+		setDescription("注意： 类名为必填项，从前端到后端的数据传输对象为DTO对象，\r\n类名以大写DTO结尾。从后端到前端数据传输对象为VO对象，类名以大写VO结尾。");
 	}
 
 	/**
