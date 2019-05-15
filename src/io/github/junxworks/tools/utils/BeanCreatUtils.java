@@ -37,7 +37,8 @@ import org.eclipse.jface.preference.IPreferenceStore;
  */
 public class BeanCreatUtils {
 
-	public static boolean creatBean(String path, String fileName,final String configId, String packageName,String tableName) throws Exception {
+	public static boolean creatBean(String path, String fileName, final String configId, String packageName,
+			String tableName) throws Exception {
 		if (StringUtil.isEmpty(path)) {
 			throw new Exception("目标路径不能为空");
 		}
@@ -49,7 +50,8 @@ public class BeanCreatUtils {
 		}
 
 		DatabaseElement de = getDatabaseElement();
-		if (StringUtil.isEmpty(de.getType()) || StringUtil.isEmpty(de.getUrl()) || StringUtil.isEmpty(de.getUsername()) || StringUtil.isEmpty(de.getPassword())) {
+		if (StringUtil.isEmpty(de.getType()) || StringUtil.isEmpty(de.getUrl()) || StringUtil.isEmpty(de.getUsername())
+				|| StringUtil.isEmpty(de.getPassword())) {
 			throw new Exception("缺少数据库连接配置参数");
 		}
 		DataBase db = DatabaseFactory.creatDataBase(de);
@@ -64,7 +66,8 @@ public class BeanCreatUtils {
 			public Object findTemplateSource(String name) throws IOException {
 				String template = JunxworksPlugin.getDefault().getPreferenceStore().getString(configId);
 				return new ByteArrayInputStream(template.getBytes());
-				//				return Thread.currentThread().getContextClassLoader().getResourceAsStream(name);
+				// return
+				// Thread.currentThread().getContextClassLoader().getResourceAsStream(name);
 			}
 
 			public long getLastModified(Object templateSource) {
@@ -79,7 +82,12 @@ public class BeanCreatUtils {
 		Template template = cfg.getTemplate("");
 		for (Table table : tables) {
 			Map<String, Object> root = new HashMap<String, Object>();
-			root.put("fileName",fileName);
+			if (fileName.contains(".")) {
+				String[] names = fileName.split("\\.");
+				root.put("fileName", names[0]);
+			} else {
+				root.put("fileName", fileName);
+			}
 			root.put("package", packageName);
 			root.put("table", table);
 			Writer out = new OutputStreamWriter(new FileOutputStream(path + File.separator + fileName), "UTF-8");
@@ -93,9 +101,12 @@ public class BeanCreatUtils {
 	/**
 	 * 生成Pojo类
 	 * 
-	 * @param path        目标路径
-	 * @param packageName 包名
-	 * @param tableNames  表名
+	 * @param path
+	 *            目标路径
+	 * @param packageName
+	 *            包名
+	 * @param tableNames
+	 *            表名
 	 * @return
 	 * @throws Exception
 	 */
@@ -111,7 +122,8 @@ public class BeanCreatUtils {
 		}
 
 		DatabaseElement de = getDatabaseElement();
-		if (StringUtil.isEmpty(de.getType()) || StringUtil.isEmpty(de.getUrl()) || StringUtil.isEmpty(de.getUsername()) || StringUtil.isEmpty(de.getPassword())) {
+		if (StringUtil.isEmpty(de.getType()) || StringUtil.isEmpty(de.getUrl()) || StringUtil.isEmpty(de.getUsername())
+				|| StringUtil.isEmpty(de.getPassword())) {
 			throw new Exception("缺少数据库连接配置参数");
 		}
 		DataBase db = DatabaseFactory.creatDataBase(de);
@@ -124,9 +136,11 @@ public class BeanCreatUtils {
 			}
 
 			public Object findTemplateSource(String name) throws IOException {
-				String template = JunxworksPlugin.getDefault().getPreferenceStore().getString(CreateMetadataAction.METADATA_CONFIG_ID);
+				String template = JunxworksPlugin.getDefault().getPreferenceStore()
+						.getString(CreateMetadataAction.METADATA_CONFIG_ID);
 				return new ByteArrayInputStream(template.getBytes());
-				//				return Thread.currentThread().getContextClassLoader().getResourceAsStream(name);
+				// return
+				// Thread.currentThread().getContextClassLoader().getResourceAsStream(name);
 			}
 
 			public long getLastModified(Object templateSource) {
@@ -143,7 +157,8 @@ public class BeanCreatUtils {
 			Map<String, Object> root = new HashMap<String, Object>();
 			root.put("package", packageName);
 			root.put("table", table);
-			Writer out = new OutputStreamWriter(new FileOutputStream(path + "/" + table.getClassName() + ".java"), "UTF-8");
+			Writer out = new OutputStreamWriter(new FileOutputStream(path + "/" + table.getClassName() + ".java"),
+					"UTF-8");
 			template.process(root, out);
 			out.flush();
 			out.close();
@@ -159,7 +174,8 @@ public class BeanCreatUtils {
 	 */
 	public static List<Table> getAllTableName(String tableName) throws Exception {
 		DatabaseElement de = getDatabaseElement();
-		if (StringUtil.isEmpty(de.getType()) || StringUtil.isEmpty(de.getUrl()) || StringUtil.isEmpty(de.getUsername()) || StringUtil.isEmpty(de.getPassword())) {
+		if (StringUtil.isEmpty(de.getType()) || StringUtil.isEmpty(de.getUrl()) || StringUtil.isEmpty(de.getUsername())
+				|| StringUtil.isEmpty(de.getPassword())) {
 			throw new Exception("缺少数据库连接配置参数");
 		}
 		DataBase db = DatabaseFactory.creatDataBase(de);
