@@ -79,6 +79,7 @@ public class BeanCreatUtils {
 		Template template = cfg.getTemplate("");
 		for (Table table : tables) {
 			Map<String, Object> root = new HashMap<String, Object>();
+			root.put("fileName",fileName);
 			root.put("package", packageName);
 			root.put("table", table);
 			Writer out = new OutputStreamWriter(new FileOutputStream(path + File.separator + fileName), "UTF-8");
