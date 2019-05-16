@@ -94,7 +94,7 @@ public class AddServiceWizard extends Wizard implements INewWizard {
 			 
 			
 		}catch(Exception e){
-			MessageDialog.openError(getShell(), "错误提示", e.getMessage());
+			MessageDialog.openError(getShell(), "Error", e.getMessage());
 			return false;
 		}
 		

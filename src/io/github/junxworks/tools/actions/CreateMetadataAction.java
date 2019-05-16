@@ -38,7 +38,7 @@ public class CreateMetadataAction implements IObjectActionDelegate {
 //		}
 		String template = JunxworksPlugin.getDefault().getPreferenceStore().getString(METADATA_CONFIG_ID);
 		if (StringUtils.isBlank(template)) {
-			MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Junx", "请先配置元数据模板");
+			MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Junx", "Please config Metadata template first");
 		} else {
 			CreateMetadataWizard wizard = new CreateMetadataWizard();
 			wizard.init(PlatformUI.getWorkbench(), null);

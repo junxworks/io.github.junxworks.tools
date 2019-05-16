@@ -39,8 +39,8 @@ public class MapperPage extends WizardPage {
 	 */
 	public MapperPage(ISelection selection) {
 		super("wizardPage");
-		setTitle("生成Mapper");
-		setDescription("根据选中的表，生成Mapper，自定义Mapper模板");
+		setTitle("Generate mapper object");
+		setDescription("Generate Mapper object from the choosen table.Mapper template is customized.");
 	}
 
 	/**
@@ -58,17 +58,17 @@ public class MapperPage extends WizardPage {
 		l1.setFont(SWTResourceManager.getFont("Microsoft YaHei UI", 10, SWT.NORMAL));
 		l1.setAlignment(SWT.RIGHT);
 		l1.setBounds(5, 19, 100, 25);
-		l1.setText("生成文件名：");
+		l1.setText("File Name：");
 
 		fileName = new Text(composite, SWT.BORDER);
 		fileName.setBounds(111, 19, 311, 25);
-		fileName.setMessage("例如xxxMapper.java or xxxMapper.xml");
+		fileName.setMessage("Example xxxMapper.java or xxxMapper.xml");
 		
 		Label lblNewLabel = new Label(composite, SWT.CENTER);
 		lblNewLabel.setFont(SWTResourceManager.getFont("Microsoft YaHei UI", 10, SWT.NORMAL));
 		lblNewLabel.setAlignment(SWT.RIGHT);
 		lblNewLabel.setBounds(5, 50, 100, 25);
-		lblNewLabel.setText("请选择数据表：");
+		lblNewLabel.setText("Choose Table：");
 
 		text = new Text(composite, SWT.BORDER);
 		text.setBounds(111, 50, 311, 25);
@@ -81,7 +81,7 @@ public class MapperPage extends WizardPage {
 			}
 		});
 		button.setBounds(431, 50, 80, 27);
-		button.setText("查询");
+		button.setText("Query");
 
 		Composite composite_1 = new Composite(container, SWT.NONE);
 		composite_1.setLayoutData(BorderLayout.CENTER);
@@ -107,19 +107,19 @@ public class MapperPage extends WizardPage {
 		tblclmnNewColumn_2.setWidth(31);
 		TableColumn tableColumn = new TableColumn(table, SWT.NONE);
 		tableColumn.setWidth(40);
-		tableColumn.setText("序号");
+		tableColumn.setText("Sequence");
 
 		TableViewerColumn tableViewerColumn = new TableViewerColumn(tableViewer, SWT.NONE);
 		TableColumn tblclmnNewColumn = tableViewerColumn.getColumn();
 		tblclmnNewColumn.setAlignment(SWT.CENTER);
 		tblclmnNewColumn.setWidth(217);
-		tblclmnNewColumn.setText("表名");
+		tblclmnNewColumn.setText("Table Name");
 
 		TableViewerColumn tableViewerColumn_1 = new TableViewerColumn(tableViewer, SWT.NONE);
 		TableColumn tblclmnNewColumn_1 = tableViewerColumn_1.getColumn();
 		tblclmnNewColumn_1.setAlignment(SWT.CENTER);
 		tblclmnNewColumn_1.setWidth(241);
-		tblclmnNewColumn_1.setText("描述");
+		tblclmnNewColumn_1.setText("Description");
 		tableViewer.setLabelProvider(new TvLabelProvider());
 		tableViewer.setContentProvider(new TvContentProvider());
 	}

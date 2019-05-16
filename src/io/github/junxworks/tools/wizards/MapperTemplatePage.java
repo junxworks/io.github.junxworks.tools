@@ -28,8 +28,8 @@ public class MapperTemplatePage extends WizardPage {
 	 */
 	public MapperTemplatePage(ISelection selection) {
 		super("wizardPage");
-		setTitle("Junx Mapper模板");
-		setDescription("配置Mapper生成模板");
+		setTitle("Junx Mapper Template");
+		setDescription("Config Mapper Template");
 	}
 
 	/**

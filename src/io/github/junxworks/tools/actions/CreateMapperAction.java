@@ -23,7 +23,7 @@ public class CreateMapperAction implements IObjectActionDelegate {
 	public void run(IAction action) {
 		String template = JunxworksPlugin.getDefault().getPreferenceStore().getString(MAPPER_CONFIG_ID);
 		if (StringUtils.isBlank(template)) {
-			MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Junx", "请先配置Mapper模板");
+			MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Junx", "Please config Mapper template first");
 		} else {
 			CreateMapperWizard wizard = new CreateMapperWizard();
 			wizard.init(PlatformUI.getWorkbench(), null);

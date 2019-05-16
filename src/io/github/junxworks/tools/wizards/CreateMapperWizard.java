@@ -39,7 +39,7 @@ public class CreateMapperWizard extends Wizard implements INewWizard {
 		try {
 			String fileName = page.fileName.getText();
 			if (fileName == null || fileName.trim().length() == 0) {
-				MessageDialog.openWarning(page.getShell(), "提示信息", "请输入生成文件名");
+				MessageDialog.openWarning(page.getShell(), "Message", "File name can't be null");
 				return false;
 			}
 			TableItem[] tableItems = page.tableViewer.getTable().getItems();
@@ -50,18 +50,18 @@ public class CreateMapperWizard extends Wizard implements INewWizard {
 				}
 			}
 			if (tableNames.size() > 1 || tableNames.size() == 0) {
-				MessageDialog.openWarning(page.getShell(), "提示信息", "请选择1个表生成Mapper");
+				MessageDialog.openWarning(page.getShell(), "Message", "Please choose one table to create Mapper");
 				return false;
 			}
 			String tableName = tableNames.get(0);
 			boolean ret = BeanCreatUtils.creatBean(path, fileName, CreateMapperAction.MAPPER_CONFIG_ID, packageName, tableName);
 			if (ret) {
-				MessageDialog.openInformation(page.getShell(), "提示信息", "生成实体成功");
+				MessageDialog.openInformation(page.getShell(), "Message", "success");
 				WorkspaceUtils.getCurrentResource().refreshLocal(IResource.DEPTH_ONE, null);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			MessageDialog.openError(page.getShell(), "提示信息", e.getMessage());
+			MessageDialog.openError(page.getShell(), "Error Message", e.getMessage());
 			return false;
 		}
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -85,15 +85,15 @@ public class CreateMapperWizard extends Wizard implements INewWizard {
 			if(tableNames != null && tableNames.size()>0){
 				boolean ret = BeanCreatAction.creatBean(path,packageName,tableNames);
 				if(ret){
-					MessageDialog.openInformation(page.getShell(),"提示信息","生成实体成功");
+					MessageDialog.openInformation(page.getShell(),"Message","生成实体成功");
 					WorkspaceUtils.getCurrentResource().refreshLocal(IResource.DEPTH_ONE, null);
 				}
 			}else{
-				MessageDialog.openWarning(page.getShell(),"提示信息","没有要生成实体的表");
+				MessageDialog.openWarning(page.getShell(),"Message","没有要生成实体的表");
 			}
 		}catch(Exception e){
 			e.printStackTrace();
-			MessageDialog.openError(page.getShell(),"提示信息",e.getMessage());
+			MessageDialog.openError(page.getShell(),"Message",e.getMessage());
 		}*/
 	}
 

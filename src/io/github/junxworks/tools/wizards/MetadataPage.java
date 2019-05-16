@@ -49,8 +49,8 @@ public class MetadataPage extends WizardPage {
 	 */
 	public MetadataPage(ISelection selection) {
 		super("wizardPage");
-		setTitle("生成元数据类");
-		setDescription("根据选中的表，生成元数据实体对象");
+		setTitle("Generate metadata");
+		setDescription("Generate metadata object from the choosen tables");
 	}
 
 	/**
@@ -68,7 +68,7 @@ public class MetadataPage extends WizardPage {
 		lblNewLabel.setFont(SWTResourceManager.getFont("Microsoft YaHei UI", 10, SWT.NORMAL));
 		lblNewLabel.setAlignment(SWT.RIGHT);
 		lblNewLabel.setBounds(5, 24, 100, 25);
-		lblNewLabel.setText("请选择数据表：");
+		lblNewLabel.setText("Choose table:");
 
 		text = new Text(composite, SWT.BORDER);
 		text.setBounds(111, 19, 311, 25);
@@ -81,7 +81,7 @@ public class MetadataPage extends WizardPage {
 			}
 		});
 		button.setBounds(431, 17, 80, 27);
-		button.setText("查询");
+		button.setText("Query");
 
 		Composite composite_1 = new Composite(container, SWT.NONE);
 		composite_1.setLayoutData(BorderLayout.CENTER);
@@ -106,19 +106,19 @@ public class MetadataPage extends WizardPage {
 		tblclmnNewColumn_2.setWidth(31);
 		TableColumn tableColumn = new TableColumn(table, SWT.NONE);
 		tableColumn.setWidth(40);
-		tableColumn.setText("序号");
+		tableColumn.setText("Sequence");
 
 		TableViewerColumn tableViewerColumn = new TableViewerColumn(tableViewer, SWT.NONE);
 		TableColumn tblclmnNewColumn = tableViewerColumn.getColumn();
 		tblclmnNewColumn.setAlignment(SWT.CENTER);
 		tblclmnNewColumn.setWidth(217);
-		tblclmnNewColumn.setText("表名");
+		tblclmnNewColumn.setText("Table Name");
 
 		TableViewerColumn tableViewerColumn_1 = new TableViewerColumn(tableViewer, SWT.NONE);
 		TableColumn tblclmnNewColumn_1 = tableViewerColumn_1.getColumn();
 		tblclmnNewColumn_1.setAlignment(SWT.CENTER);
 		tblclmnNewColumn_1.setWidth(241);
-		tblclmnNewColumn_1.setText("描述");
+		tblclmnNewColumn_1.setText("Description");
 		tableViewer.setLabelProvider(new TvLabelProvider());
 		tableViewer.setContentProvider(new TvContentProvider());
 		//

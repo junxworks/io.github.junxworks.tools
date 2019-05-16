@@ -50,16 +50,16 @@ public class CreateMetadataWizard extends Wizard implements INewWizard {
 			if(tableNames != null && tableNames.size()>0){
 				boolean ret = BeanCreatUtils.creatBean(path,packageName,tableNames);
 				if(ret){
-					MessageDialog.openInformation(page.getShell(),"提示信息","生成实体成功");
+					MessageDialog.openInformation(page.getShell(),"Message","Create metadata success");
 					WorkspaceUtils.getCurrentResource().refreshLocal(IResource.DEPTH_ONE, null);
 				}
 			}else{
-				MessageDialog.openWarning(page.getShell(),"提示信息","没有要生成实体的表");
+				MessageDialog.openWarning(page.getShell(),"Message","Please choose at least one table to create metadata");
 				return false;
 			}
 		}catch(Exception e){
 			e.printStackTrace();
-			MessageDialog.openError(page.getShell(),"提示信息",e.getMessage());
+			MessageDialog.openError(page.getShell(),"Message",e.getMessage());
 			return false;
 		}
 		Map<String,Object> map = new HashMap<String,Object>();
@@ -96,15 +96,15 @@ public class CreateMetadataWizard extends Wizard implements INewWizard {
 			if(tableNames != null && tableNames.size()>0){
 				boolean ret = BeanCreatAction.creatBean(path,packageName,tableNames);
 				if(ret){
-					MessageDialog.openInformation(page.getShell(),"提示信息","生成实体成功");
+					MessageDialog.openInformation(page.getShell(),"Message","生成实体成功");
 					WorkspaceUtils.getCurrentResource().refreshLocal(IResource.DEPTH_ONE, null);
 				}
 			}else{
-				MessageDialog.openWarning(page.getShell(),"提示信息","没有要生成实体的表");
+				MessageDialog.openWarning(page.getShell(),"Message","没有要生成实体的表");
 			}
 		}catch(Exception e){
 			e.printStackTrace();
-			MessageDialog.openError(page.getShell(),"提示信息",e.getMessage());
+			MessageDialog.openError(page.getShell(),"Message",e.getMessage());
 		}*/
 	}
 	

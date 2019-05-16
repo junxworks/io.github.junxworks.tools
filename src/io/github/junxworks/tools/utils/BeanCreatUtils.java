@@ -40,13 +40,13 @@ public class BeanCreatUtils {
 	public static boolean creatBean(String path, String fileName, final String configId, String packageName,
 			String tableName) throws Exception {
 		if (StringUtil.isEmpty(path)) {
-			throw new Exception("目标路径不能为空");
+			throw new Exception("File path can not be empty");
 		}
 		if (StringUtil.isEmpty(packageName)) {
-			throw new Exception("包名不能为空");
+			throw new Exception("Package name can not be empty");
 		}
 		if (null == tableName) {
-			throw new Exception("表名不能为空");
+			throw new Exception("Table name can not be empty");
 		}
 
 		DatabaseElement de = getDatabaseElement();
@@ -112,19 +112,19 @@ public class BeanCreatUtils {
 	 */
 	public static boolean creatBean(String path, String packageName, List<String> tableNames) throws Exception {
 		if (StringUtil.isEmpty(path)) {
-			throw new Exception("目标路径不能为空");
+			throw new Exception("File path can not be empty");
 		}
 		if (StringUtil.isEmpty(packageName)) {
-			throw new Exception("包名不能为空");
+			throw new Exception("Package name can not be empty");
 		}
 		if (null == tableNames || tableNames.size() < 1) {
-			throw new Exception("表名不能为空");
+			throw new Exception("Table name can not be empty");
 		}
 
 		DatabaseElement de = getDatabaseElement();
 		if (StringUtil.isEmpty(de.getType()) || StringUtil.isEmpty(de.getUrl()) || StringUtil.isEmpty(de.getUsername())
 				|| StringUtil.isEmpty(de.getPassword())) {
-			throw new Exception("缺少数据库连接配置参数");
+			throw new Exception("Please finish database configuration first");
 		}
 		DataBase db = DatabaseFactory.creatDataBase(de);
 		List<Table> tables = db.getTables(de.getSchema(), tableNames);
@@ -176,7 +176,7 @@ public class BeanCreatUtils {
 		DatabaseElement de = getDatabaseElement();
 		if (StringUtil.isEmpty(de.getType()) || StringUtil.isEmpty(de.getUrl()) || StringUtil.isEmpty(de.getUsername())
 				|| StringUtil.isEmpty(de.getPassword())) {
-			throw new Exception("缺少数据库连接配置参数");
+			throw new Exception("Please finish database configuration first");
 		}
 		DataBase db = DatabaseFactory.creatDataBase(de);
 		List<Table> tName = db.queryAllTableNames(de.getSchema(), tableName);

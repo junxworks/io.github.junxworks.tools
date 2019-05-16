@@ -27,8 +27,8 @@ public class MetadataTemplatePage extends WizardPage {
 	 */
 	public MetadataTemplatePage(ISelection selection) {
 		super("wizardPage");
-		setTitle("Junx元数据模板");
-		setDescription("配置元数据生成模板");
+		setTitle("Junx Metadata Template");
+		setDescription("Config metadata generation template");
 	}
 
 	/**
