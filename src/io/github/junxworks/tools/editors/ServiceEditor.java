@@ -287,7 +287,7 @@ public class ServiceEditor extends MultiPageEditorPart implements IResourceChang
 
 		Label lblNewLabel = new Label(group, SWT.NONE);
 		lblNewLabel.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-		lblNewLabel.setText("服务类名：");
+		lblNewLabel.setText("服务类名:");
 
 		text_1 = new Text(group, SWT.BORDER);
 		text_1.setLayoutData(new GridData(SWT.FILL, SWT.LEFT, true, false, 1, 1));
@@ -297,7 +297,7 @@ public class ServiceEditor extends MultiPageEditorPart implements IResourceChang
 
 		Label lblNewLabel_1 = new Label(group, SWT.NONE);
 		lblNewLabel_1.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-		lblNewLabel_1.setText("事务控制层：");
+		lblNewLabel_1.setText("事务控制层:");
 
 		combo = new Combo(group, SWT.READ_ONLY | SWT.ARROW_DOWN);
 		combo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
@@ -311,7 +311,7 @@ public class ServiceEditor extends MultiPageEditorPart implements IResourceChang
 		
 		Label lblNewLabel_2 = new Label(group, SWT.NONE);
 		lblNewLabel_2.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-		lblNewLabel_2.setText("事务传播：");
+		lblNewLabel_2.setText("事务传播:");
 
 		combo_1 = new Combo(group, SWT.READ_ONLY | SWT.ARROW_DOWN);
 		combo_1.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
@@ -327,7 +327,7 @@ public class ServiceEditor extends MultiPageEditorPart implements IResourceChang
 		
 		Label lblNewLabel_3 = new Label(group, SWT.NONE);
 		lblNewLabel_3.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-		lblNewLabel_3.setText("连接池：");
+		lblNewLabel_3.setText("连接池:");
 
 		text_2 = new Text(group, SWT.BORDER);
 		text_2.setLayoutData(new GridData(SWT.FILL, SWT.LEFT, true, false, 1, 1));
@@ -355,7 +355,7 @@ public class ServiceEditor extends MultiPageEditorPart implements IResourceChang
 		
 		Label lblNewLabel_4 = new Label(group, SWT.NONE);
 		lblNewLabel_4.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-		lblNewLabel_4.setText("反序列化器：");
+		lblNewLabel_4.setText("反序列化器:");
 
 		combo_2 = new Combo(group, SWT.READ_ONLY | SWT.ARROW_DOWN);
 		combo_2.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
@@ -365,7 +365,7 @@ public class ServiceEditor extends MultiPageEditorPart implements IResourceChang
 		
 		Label lblNewLabel_5 = new Label(group, SWT.NONE);
 		lblNewLabel_5.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-		lblNewLabel_5.setText("序列化器：");
+		lblNewLabel_5.setText("序列化器:");
 
 		combo_3 = new Combo(group, SWT.READ_ONLY | SWT.ARROW_DOWN);
 		combo_3.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));

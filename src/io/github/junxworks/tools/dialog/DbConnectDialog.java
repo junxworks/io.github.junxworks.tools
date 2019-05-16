@@ -78,27 +78,27 @@ public class DbConnectDialog extends Dialog {
 		Label lblNewLabel_1 = new Label(composite_1, SWT.NONE);
 		lblNewLabel_1.setAlignment(SWT.RIGHT);
 		lblNewLabel_1.setBounds(20, 20, 80, 23);
-		lblNewLabel_1.setText("DB type：");
+		lblNewLabel_1.setText("DB type:");
 		
 		Label lblNewLabel_2 = new Label(composite_1, SWT.NONE);
 		lblNewLabel_2.setAlignment(SWT.RIGHT);
 		lblNewLabel_2.setBounds(20, 50, 80, 23);
-		lblNewLabel_2.setText("URL：");
+		lblNewLabel_2.setText("URL:");
 		
 		Label lblNewLabel_3 = new Label(composite_1, SWT.NONE);
 		lblNewLabel_3.setAlignment(SWT.RIGHT);
-		lblNewLabel_3.setText("username：");
+		lblNewLabel_3.setText("username:");
 		lblNewLabel_3.setBounds(20, 80, 80, 23);
 		
 		Label lblNewLabel_4 = new Label(composite_1, SWT.NONE);
 		lblNewLabel_4.setAlignment(SWT.RIGHT);
 		lblNewLabel_4.setBounds(20, 110, 80, 23);
-		lblNewLabel_4.setText("password：");
+		lblNewLabel_4.setText("password:");
 		
 		Label lblNewLabel_5 = new Label(composite_1, SWT.NONE);
 		lblNewLabel_5.setAlignment(SWT.RIGHT);
 		lblNewLabel_5.setBounds(20, 140, 80, 23);
-		lblNewLabel_5.setText("Schema：");
+		lblNewLabel_5.setText("Schema:");
 		
 		text_1 = new Text(composite_1, SWT.BORDER);
 		text_1.setBounds(110, 50, 240, 23);

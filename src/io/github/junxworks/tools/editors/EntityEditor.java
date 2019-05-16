@@ -127,7 +127,7 @@ public class EntityEditor extends MultiPageEditorPart implements IResourceChange
 
 		Label lblNewLabel = new Label(group, SWT.NONE);
 		lblNewLabel.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
-		lblNewLabel.setText("实体类名：");
+		lblNewLabel.setText("实体类名:");
 		lblNewLabel.setAlignment(SWT.RIGHT);
 
 		text_1 = new Text(group, SWT.BORDER);
@@ -138,7 +138,7 @@ public class EntityEditor extends MultiPageEditorPart implements IResourceChange
 		
 		Label lblNewLabel2 = new Label(group, SWT.NONE);
 		lblNewLabel2.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
-		lblNewLabel2.setText("数据元：");
+		lblNewLabel2.setText("数据元:");
 		lblNewLabel2.setAlignment(SWT.RIGHT);
 		
 		combo = new Combo(group, SWT.READ_ONLY | SWT.ARROW_DOWN);

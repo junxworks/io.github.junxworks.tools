@@ -58,7 +58,7 @@ public class DbUtil {
 		} else if (type.toLowerCase().contains("mysql")) {
 			className = "com.mysql.jdbc.Driver";
 		} else {
-			throw new Exception("暂不支持数据库类型：" + type);
+			throw new Exception("暂不支持数据库类型:" + type);
 		}
 		try {
 			Class.forName(className);

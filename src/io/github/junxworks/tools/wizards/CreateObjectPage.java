@@ -79,7 +79,7 @@ public class CreateObjectPage extends WizardPage {
 	public CreateObjectPage(ISelection selection) {
 		super("wizardPage");
 		setTitle("Create Pojo Class");
-		setDescription("Attention： class name is required,DTO object is data transaction object,\r\nclass name suffix must be DTO.VO is view object，class name suffix must be VO.");
+		setDescription("Attention: class name is required,DTO object is data transaction object,\r\nclass name suffix must be DTO.VO is view object，class name suffix must be VO.");
 	}
 
 	/**
@@ -96,7 +96,7 @@ public class CreateObjectPage extends WizardPage {
 
 		Label lblNewLabel = new Label(group, SWT.NONE);
 		lblNewLabel.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
-		lblNewLabel.setText("class name：");
+		lblNewLabel.setText("class name:");
 		lblNewLabel.setAlignment(SWT.RIGHT);
 
 		className = new Text(group, SWT.BORDER);
@@ -277,7 +277,7 @@ public class CreateObjectPage extends WizardPage {
 			for (IJavaElement e : child) {
 				if (e.getElementType() == IJavaElement.COMPILATION_UNIT) {
 					if ((serviceName + ".java").equals(e.getElementName())) {
-						MessageDialog.openWarning(getShell(), "WARNING", "Duplicated class name ：" + serviceName + " ！");
+						MessageDialog.openWarning(getShell(), "WARNING", "Duplicated class name :" + serviceName + " ！");
 						return false;
 					}
 				}

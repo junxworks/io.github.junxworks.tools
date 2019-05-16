@@ -58,7 +58,7 @@ public class MapperPage extends WizardPage {
 		l1.setFont(SWTResourceManager.getFont("Microsoft YaHei UI", 10, SWT.NORMAL));
 		l1.setAlignment(SWT.RIGHT);
 		l1.setBounds(5, 19, 100, 25);
-		l1.setText("File Name：");
+		l1.setText("File Name:");
 
 		fileName = new Text(composite, SWT.BORDER);
 		fileName.setBounds(111, 19, 311, 25);
@@ -68,7 +68,7 @@ public class MapperPage extends WizardPage {
 		lblNewLabel.setFont(SWTResourceManager.getFont("Microsoft YaHei UI", 10, SWT.NORMAL));
 		lblNewLabel.setAlignment(SWT.RIGHT);
 		lblNewLabel.setBounds(5, 50, 100, 25);
-		lblNewLabel.setText("Choose Table：");
+		lblNewLabel.setText("Choose Table:");
 
 		text = new Text(composite, SWT.BORDER);
 		text.setBounds(111, 50, 311, 25);
