@@ -39,7 +39,7 @@
                   commandId="io.github.junxworks.tools.commands.openConfigCommand"
                   icon="icons/config.png"
                   id="io.github.junxworks.tools.toolbars.openConfigCommand"
-                  tooltip="数据库配置">
+                  tooltip="DB Config">
             </command>
          </toolbar>
       </menuContribution>
@@ -81,35 +81,35 @@
                class="io.github.junxworks.tools.actions.CreateMetadataAction"
                icon="icons/ctrl/addPojo.png"
                id="io.github.junxworks.tools.actions.CreateMetadataAction"
-               label="创建元数据"
+               label="Create Metadata"
                menubarPath="io.github.junxworks.tools.junxmenu/packageOp">
          </action>
          <action
                class="io.github.junxworks.tools.actions.CreateObjectAction"
                icon="icons/ctrl/add.png"
                id="io.github.junxworks.tools.actions.CreateObjectAction"
-               label="创建Pojo对象"
+               label="Create Pojo Object"
                menubarPath="io.github.junxworks.tools.junxmenu/packageOp">
          </action>
          <action
                class="io.github.junxworks.tools.actions.MapperTemlateConfigAction"
                icon="icons/config.png"
                id="io.github.junxworks.tools.actions.MapperTemlateConfigAction"
-               label="配置Mapper模板"
+               label="Config Mapper Template"
                menubarPath="io.github.junxworks.tools.junxmenu/configOp">
          </action>
          <action
                class="io.github.junxworks.tools.actions.MetadataTemlateConfigAction"
                icon="icons/config.png"
                id="io.github.junxworks.tools.actions.MetadataTemlateConfigAction"
-               label="配置元数据模板"
+               label="Config Metadata Template"
                menubarPath="io.github.junxworks.tools.junxmenu/configOp">
          </action>
           <action
                class="io.github.junxworks.tools.actions.AboutAction"
                icon="icons/config.png"
                id="io.github.junxworks.tools.actions.AboutAction"
-               label="插件说明"
+               label="Plugin Introduction"
                menubarPath="io.github.junxworks.tools.junxmenu/about">
          </action>
       </objectContribution>
@@ -129,7 +129,7 @@
                class="io.github.junxworks.tools.actions.UpdateMetadataAction"
                icon="icons/ctrl/update.png"
                id="io.github.junxworks.tools.actions.UpdateMetadataAction"
-               label="更新元数据"
+               label="Update Metadata"
                menubarPath="io.github.junxworks.tools.javaObjectMenu/objectOp">
          </action>
       </objectContribution>
