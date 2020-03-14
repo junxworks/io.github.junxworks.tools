@@ -65,7 +65,7 @@ public class DbConnectDialog extends Dialog {
 		
 		shell = new Shell(getParent(), SWT.BORDER | SWT.CLOSE);
 		shell.setSize(380, 252);
-		shell.setText("数据库链接配置");
+		shell.setText("DB Config");
 		shell.setLayout(new BorderLayout(0, 0));
 		shell.setLocation(Display.getCurrent().getClientArea().width / 2 - shell.getShell().getSize().x/2, Display.getCurrent() 
                 .getClientArea().height / 2 - shell.getSize().y/2);
@@ -78,27 +78,27 @@ public class DbConnectDialog extends Dialog {
 		Label lblNewLabel_1 = new Label(composite_1, SWT.NONE);
 		lblNewLabel_1.setAlignment(SWT.RIGHT);
 		lblNewLabel_1.setBounds(20, 20, 80, 23);
-		lblNewLabel_1.setText("数据库类型：");
+		lblNewLabel_1.setText("Database Type:");
 		
 		Label lblNewLabel_2 = new Label(composite_1, SWT.NONE);
 		lblNewLabel_2.setAlignment(SWT.RIGHT);
 		lblNewLabel_2.setBounds(20, 50, 80, 23);
-		lblNewLabel_2.setText("URL：");
+		lblNewLabel_2.setText("URL:");
 		
 		Label lblNewLabel_3 = new Label(composite_1, SWT.NONE);
 		lblNewLabel_3.setAlignment(SWT.RIGHT);
-		lblNewLabel_3.setText("用户名称：");
+		lblNewLabel_3.setText("Username:");
 		lblNewLabel_3.setBounds(20, 80, 80, 23);
 		
 		Label lblNewLabel_4 = new Label(composite_1, SWT.NONE);
 		lblNewLabel_4.setAlignment(SWT.RIGHT);
 		lblNewLabel_4.setBounds(20, 110, 80, 23);
-		lblNewLabel_4.setText("用户密码：");
+		lblNewLabel_4.setText("Password:");
 		
 		Label lblNewLabel_5 = new Label(composite_1, SWT.NONE);
 		lblNewLabel_5.setAlignment(SWT.RIGHT);
 		lblNewLabel_5.setBounds(20, 140, 80, 23);
-		lblNewLabel_5.setText("Schema：");
+		lblNewLabel_5.setText("Schema:");
 		
 		text_1 = new Text(composite_1, SWT.BORDER);
 		text_1.setBounds(110, 50, 240, 23);
@@ -127,7 +127,7 @@ public class DbConnectDialog extends Dialog {
 			}
 		});
 		btnNewButton.setBounds(60, 5, 80, 27);
-		btnNewButton.setText("测试链接");
+		btnNewButton.setText("Test");
 		
 		Button btnNewButton_1 = new Button(composite_2, SWT.NONE);
 		btnNewButton_1.addSelectionListener(new SelectionAdapter() {
@@ -137,7 +137,7 @@ public class DbConnectDialog extends Dialog {
 			}
 		});
 		btnNewButton_1.setBounds(145, 5, 80, 27);
-		btnNewButton_1.setText("保存");
+		btnNewButton_1.setText("save");
 		
 		Button btnNewButton_2 = new Button(composite_2, SWT.NONE);
 		btnNewButton_2.addSelectionListener(new SelectionAdapter() {
@@ -147,7 +147,7 @@ public class DbConnectDialog extends Dialog {
 			}
 		});
 		btnNewButton_2.setBounds(230, 5, 80, 27);
-		btnNewButton_2.setText("取消");
+		btnNewButton_2.setText("cancel");
 		
 		Label lblNewLabel_6 = new Label(composite_2, SWT.NONE);
 		lblNewLabel_6.setBounds(10, 40, 434, 5);
@@ -182,7 +182,7 @@ public class DbConnectDialog extends Dialog {
 		
 		if(isNull(dbTypeVal) || isNull(urlVal) || isNull(userVal)
 				||isNull(pwdVal) ||isNull(schemaVal)){
-			MessageDialog.openError(shell,"提示信息","参数不能为空");
+			MessageDialog.openError(shell,"Alert","Parameters can not be null");
 			return;
 		}
 		if("save".equals(type)){
@@ -198,13 +198,13 @@ public class DbConnectDialog extends Dialog {
 			flag = DbUtil.isConnection(dbTypeVal,urlVal,userVal,pwdVal);
 		}catch(Exception ex){
 			ex.printStackTrace();
-			MessageDialog.openError(shell,"提示信息",ex.getMessage());
+			MessageDialog.openError(shell,"Alert",ex.getMessage());
 			return;
 		}
 		if(flag){
-			MessageDialog.openInformation(shell,"提示信息","链接成功");
+			MessageDialog.openInformation(shell,"Alert","Success");
 		}else{
-			MessageDialog.openError(shell,"提示信息","链接失败，请检查配置参数");
+			MessageDialog.openError(shell,"Alert","Test failed,please check your DB configuration.");
 		}
 	}
 	
