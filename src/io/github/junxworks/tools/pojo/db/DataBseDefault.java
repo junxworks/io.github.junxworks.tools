@@ -1,7 +1,6 @@
 package io.github.junxworks.tools.pojo.db;
 
 import java.sql.Connection;
-import java.sql.DatabaseMetaData;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -11,19 +10,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.github.junxworks.tools.pojo.db.model.Column;
+import io.github.junxworks.tools.pojo.db.model.DatabaseElement;
 import io.github.junxworks.tools.pojo.db.model.Table;
+import io.github.junxworks.tools.pojo.db.utils.DbUtil;
 import io.github.junxworks.tools.pojo.db.utils.StringUtil;
 
 public class DataBseDefault implements DataBase {
-	Connection con;
 	TypeMapping typeMapping;
 
-	public DataBseDefault() {
+	DatabaseElement de;
+
+	public DataBseDefault(DatabaseElement de) {
 		typeMapping = new TypeMapping();
+		this.de = de;
+	}
+
+	public void closeConn(Connection conn) {
+		try {
+			if (conn != null) {
+				conn.close();
+				conn = null;
+			}
+		} catch (SQLException e) {
+
+		}
+	}
+
+	public Connection getConn() throws Exception {
+		return DbUtil.getConnection(de.getType(), de.getUrl(), de.getUsername(), de.getPassword());
 	}
 
 	@Override
-	public List<Table> queryAllTableNames(String schema,String tableName) {
+	public List<Table> queryAllTableNames(String schema, String tableName) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -31,22 +49,27 @@ public class DataBseDefault implements DataBase {
 	@Override
 	public List<Table> getTables(String schema, List<String> tableNames) {
 		List<Table> tables = new ArrayList<Table>();
-		for (String tableName : tableNames) {
-			Table table = getTable(schema, tableName);
-			if (null != table) {
-				tables.add(table);
-			}
-		}
 
+		try (Connection con = getConn()) {
+			for (String tableName : tableNames) {
+				Table table = getTable(schema, tableName, con);
+				if (null != table) {
+					tables.add(table);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return tables;
 	}
 
-	private Table getTable(String schema, String tableName) {
+	private Table getTable(String schema, String tableName, Connection con) {
 		ResultSet rs = null;
 		Table table = null;
 		try {
 			rs = con.getMetaData().getTables(null, schema, tableName, new String[] { "TABLE" });
-
 			if (rs.next()) {
 				table = new Table();
 				table.setCatalog(rs.getString("TABLE_CAT"));
@@ -55,14 +78,14 @@ public class DataBseDefault implements DataBase {
 				table.setRemarks(rs.getString("REMARKS"));
 				table.setTableType(rs.getString("TABLE_TYPE"));
 
-				introspectPrimaryKeys(table);
-				introspectColumns(table);
-				introspectForeignKeys(table);
-				introspectIndex(table);
-				introspectGeneratedKeys(table);
+				introspectPrimaryKeys(table, con);
+				introspectColumns(table, con);
+				introspectForeignKeys(table, con);
+				introspectIndex(table, con);
+				introspectGeneratedKeys(table, con);
 			}
-		} catch (SQLException e) {
-
+		} catch (Exception e) {
+			e.printStackTrace();
 		} finally {
 			closeResultSet(rs);
 		}
@@ -94,7 +117,7 @@ public class DataBseDefault implements DataBase {
 		}
 	}
 
-	protected void introspectPrimaryKeys(Table table) {
+	protected void introspectPrimaryKeys(Table table, Connection con) {
 		ResultSet rs = null;
 		try {
 			rs = con.getMetaData().getPrimaryKeys(null, null, table.getTableName());
@@ -115,14 +138,14 @@ public class DataBseDefault implements DataBase {
 		}
 	}
 
-	protected void introspectColumns(Table table) {
+	protected void introspectColumns(Table table, Connection con) {
 		ResultSet rs = null;
 		try {
 
 			rs = con.getMetaData().getColumns(null, null, table.getTableName(), "%");
 
 			while (rs.next()) {
-				
+
 				String columnName = rs.getString("COLUMN_NAME");// 获得字段名称
 				if (StringUtil.isEmpty(columnName)) {
 					continue;
@@ -155,7 +178,7 @@ public class DataBseDefault implements DataBase {
 	}
 
 	// 获得外键的信息
-	protected void introspectForeignKeys(Table table) {
+	protected void introspectForeignKeys(Table table, Connection con) {
 		ResultSet rs = null;
 		try {
 			rs = con.getMetaData().getImportedKeys(null, null, table.getTableName());
@@ -181,7 +204,7 @@ public class DataBseDefault implements DataBase {
 	}
 
 	// 获得索引
-	protected void introspectIndex(Table table) {
+	protected void introspectIndex(Table table, Connection con) {
 		ResultSet rs = null;
 		try {
 			rs = con.getMetaData().getIndexInfo(null, null, table.getTableName(), true, true);
@@ -205,7 +228,7 @@ public class DataBseDefault implements DataBase {
 	}
 
 	// 获取自动增长列
-	protected void introspectGeneratedKeys(Table table) {
+	protected void introspectGeneratedKeys(Table table, Connection con) {
 		try {
 			PreparedStatement ps = con.prepareStatement("select * from " + table.getTableName());
 			ResultSet rs = ps.executeQuery();

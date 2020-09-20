@@ -1,7 +1,8 @@
 package io.github.junxworks.tools.dialog;
 
+import java.util.Properties;
+
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -15,7 +16,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.wb.swt.SWTResourceManager;
 
-import io.github.junxworks.tools.JunxworksPlugin;
+import io.github.junxworks.tools.WorkspaceUtils;
 import io.github.junxworks.tools.pojo.db.utils.DbUtil;
 import swing2swt.layout.BorderLayout;
 
@@ -28,7 +29,6 @@ public class DbConnectDialog extends Dialog {
 	private Text text_3;
 	private Text text_4;
 	private Combo combo;
-	private IPreferenceStore store;
 	
 	/**
 	 * Create the dialog.
@@ -37,8 +37,7 @@ public class DbConnectDialog extends Dialog {
 	 */
 	public DbConnectDialog(Shell parent) {
 		super(parent);
-		setText("SWT Dialog");
-		store = JunxworksPlugin.getDefault().getPreferenceStore();
+		setText("Database Configuration");
 	}
 
 	/**
@@ -157,11 +156,12 @@ public class DbConnectDialog extends Dialog {
 	
 	//给赋予默认值
 	private void setValue(){
-		String dbTypeVal = store.getString("dbType");
-		String urlVal = store.getString("url");
-		String userNameVal = store.getString("user");
-		String passwordVal = store.getString("password");
-		String schemaVal = store.getString("schema");
+		Properties store=WorkspaceUtils.getProjectConfig();
+		String dbTypeVal = store.getProperty("dbType","");
+		String urlVal = store.getProperty("url","");
+		String userNameVal = store.getProperty("user","");
+		String passwordVal = store.getProperty("password","");
+		String schemaVal = store.getProperty("schema","");
 		
 		combo.setText(dbTypeVal);
 		text_1.setText(urlVal);
@@ -186,11 +186,13 @@ public class DbConnectDialog extends Dialog {
 			return;
 		}
 		if("save".equals(type)){
-			store.setValue("dbType", dbTypeVal);
-			store.setValue("url", urlVal);
-			store.setValue("user", userVal);
-			store.setValue("password", pwdVal);
-			store.setValue("schema", schemaVal);
+			Properties store=WorkspaceUtils.getProjectConfig();
+			store.setProperty("dbType", dbTypeVal);
+			store.setProperty("url", urlVal);
+			store.setProperty("user", userVal);
+			store.setProperty("password", pwdVal);
+			store.setProperty("schema", schemaVal);
+			WorkspaceUtils.saveProjectConfig();
 			shell.dispose();
 			return;
 		}

@@ -35,7 +35,7 @@ public class JunxworksPlugin extends AbstractUIPlugin {
 
 	public static void log(String msg) {
 		ILog log = getDefault().getLog();
-		Status status = new Status(4, getDefault().getDescriptor().getUniqueIdentifier(), 4, msg + "\n", null);
+		Status status = new Status(4, PLUGIN_ID, 4, msg + "\n", null);
 		log.log(status);
 	}
 
@@ -44,8 +44,7 @@ public class JunxworksPlugin extends AbstractUIPlugin {
 		StringWriter stringWriter = new StringWriter();
 		e.printStackTrace(new PrintWriter(stringWriter));
 		String msg = stringWriter.getBuffer().toString();
-
-		Status status = new Status(4, getDefault().getDescriptor().getUniqueIdentifier(), 4, msg, null);
+		Status status = new Status(4, PLUGIN_ID, 4, msg, null);
 		log.log(status);
 	}
 

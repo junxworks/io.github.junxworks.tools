@@ -42,7 +42,7 @@ public class AboutAction implements IWorkbenchWindowActionDelegate {
 			while ((line = br.readLine()) != null) {
 				buffer.append(line);
 			}
-			MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Junx插件说明", buffer.toString());
+			MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "About Junx plugin", buffer.toString());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

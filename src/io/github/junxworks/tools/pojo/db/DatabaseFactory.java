@@ -13,13 +13,12 @@ public class DatabaseFactory {
 	 * @throws Exception 
 	 */
 	public static DataBase creatDataBase(DatabaseElement de ) throws Exception {
-		Connection con = DbUtil.getConnection(de.getType(), de.getUrl(), de.getUsername(), de.getPassword());
 		if(de.getType().toLowerCase().contains("oracle")){
-            return new OracleDatabase(con);
+            return new OracleDatabase(de);
         } else if(de.getType().toLowerCase().contains("sql server")){
-            return new SqlServerDatabase(con);
+            return new SqlServerDatabase(de);
         } else if(de.getType().toLowerCase().contains("mysql")){
-            return new MySqlDatabase(con);
+            return new MySqlDatabase(de);
         } 
 		return null;
 	}

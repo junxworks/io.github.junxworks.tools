@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.github.junxworks.tools.pojo.db.model.DatabaseElement;
 import io.github.junxworks.tools.pojo.db.model.Table;
 import io.github.junxworks.tools.pojo.db.utils.StringUtil;
 
@@ -18,8 +19,8 @@ public class OracleDatabase extends DataBseDefault {
 	// private static final String COLUMN_COMMENTS_SQL = "select * from
 	// user_col_comments where TABLE_NAME=?";
 
-	public OracleDatabase(Connection con) {
-		this.con = con;
+	public OracleDatabase(DatabaseElement de) {
+		super(de);
 	}
 
 	@Override
@@ -38,7 +39,9 @@ public class OracleDatabase extends DataBseDefault {
 		List<Table> ts = new ArrayList<Table>();
 		PreparedStatement psmt = null;
 		ResultSet rs = null;
+		Connection con = null;
 		try {
+			con = getConn();
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, schema);
 			rs = psmt.executeQuery();
@@ -48,11 +51,12 @@ public class OracleDatabase extends DataBseDefault {
 				table.setTableComment(rs.getString("COMMENTS"));
 				ts.add(table);
 			}
-		} catch (SQLException e) {
+		} catch (Exception e) {
 
 		} finally {
 			closeResultSet(rs);
 			closeStatement(psmt);
+			closeConn(con);
 		}
 		return ts;
 	}

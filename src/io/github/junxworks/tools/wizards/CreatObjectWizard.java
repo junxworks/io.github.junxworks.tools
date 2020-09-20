@@ -96,7 +96,7 @@ public class CreatObjectWizard extends Wizard implements INewWizard {
 			}
 
 		} catch (Exception e) {
-			MessageDialog.openError(getShell(), "错误提示", e.getMessage());
+			MessageDialog.openError(getShell(), "Error message", e.getMessage());
 			return false;
 		}
 
@@ -125,7 +125,7 @@ public class CreatObjectWizard extends Wizard implements INewWizard {
 				javaFile.delete();
 			javaFile.createNewFile();
 
-			Bundle bundle = Platform.getBundle(JunxworksPlugin.PLUGIN_ID);// 从Bundle来查找资源：
+			Bundle bundle = Platform.getBundle(JunxworksPlugin.PLUGIN_ID);// 从Bundle来查找资源:
 			URL pluginUrl = Platform.find(bundle, new org.eclipse.core.runtime.Path("template"));
 			URL pluginFileUrl = Platform.asLocalURL(pluginUrl);
 			org.eclipse.core.runtime.Path x = new org.eclipse.core.runtime.Path(pluginFileUrl.getPath());

@@ -3,17 +3,6 @@ package io.github.junxworks.tools.pojo.db.utils;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
-import io.github.junxworks.tools.pojo.db.DataBase;
-import io.github.junxworks.tools.pojo.db.DataBseDefault;
-import io.github.junxworks.tools.pojo.db.DatabaseFactory;
-import io.github.junxworks.tools.pojo.db.MySqlDatabase;
-import io.github.junxworks.tools.pojo.db.OracleDatabase;
-import io.github.junxworks.tools.pojo.db.model.DatabaseElement;
-import io.github.junxworks.tools.pojo.db.model.Table;
-import io.github.junxworks.tools.utils.BeanCreatUtils;
 
 public class DbUtil {
 	/**
@@ -56,9 +45,9 @@ public class DbUtil {
 		} else if (type.toLowerCase().contains("sql server")) {
 			className = "com.microsoft.jdbc.sqlserver.SQLServerDriver";
 		} else if (type.toLowerCase().contains("mysql")) {
-			className = "com.mysql.jdbc.Driver";
+			className = "com.mysql.cj.jdbc.Driver";
 		} else {
-			throw new Exception("暂不支持数据库类型：" + type);
+			throw new Exception("暂不支持数据库类型:" + type);
 		}
 		try {
 			Class.forName(className);
@@ -72,24 +61,4 @@ public class DbUtil {
 		return con;
 	}
 	
-	
-	
-	public static void main(String[] args) throws Exception {
-		DatabaseElement de = new DatabaseElement();
-		de.setType("mysql");
-		de.setUrl("jdbc:mysql://10.111.125.137:3306/test");
-		de.setUsername("root");
-		de.setPassword("123456");
-		de.setSchema("test");
-		Connection con = DbUtil.getConnection("mysql", "jdbc:mysql://10.111.125.137:3306/test", "root", "123456");
-		List<Table> tables = BeanCreatUtils.getAllTableName("");
-		List<String> tableNames = new ArrayList<String>();
-		for (Table table : tables) {
-			
-		}
-		tableNames.add("user");
-		DataBase db = DatabaseFactory.creatDataBase(de);
-		List<Table> tablies = db.getTables(de.getSchema(), tableNames);
-		BeanCreatUtils.creatBean("C:\\Users\\levovo\\git\\BDPTools\\src\\com\\ydtf\\bdp\\tools\\pojo\\db\\utils\\", "package io.github.junxworks.pojo.db.model", tableNames);
-	}
 }

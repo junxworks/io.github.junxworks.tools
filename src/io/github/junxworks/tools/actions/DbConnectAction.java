@@ -2,8 +2,10 @@ package io.github.junxworks.tools.actions;
 
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.IObjectActionDelegate;
+import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindowActionDelegate;
+import org.eclipse.ui.PlatformUI;
 
 import io.github.junxworks.tools.dialog.DbConnectDialog;
 
@@ -15,12 +17,12 @@ import io.github.junxworks.tools.dialog.DbConnectDialog;
  * delegated to it.
  * @see IWorkbenchWindowActionDelegate
  */
-public class DbConnectAction implements IWorkbenchWindowActionDelegate {
-	private IWorkbenchWindow window;
+public class DbConnectAction implements IObjectActionDelegate {
 	/**
 	 * The constructor.
 	 */
 	public DbConnectAction() {
+		super();
 	}
 
 	/**
@@ -34,7 +36,7 @@ public class DbConnectAction implements IWorkbenchWindowActionDelegate {
 			window.getShell(),
 			"Tools",
 			"链接数据库");*/
-		DbConnectDialog dialog = new DbConnectDialog(window.getShell());
+		DbConnectDialog dialog = new DbConnectDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
 		dialog.open();
 		/*if(dialog.open() != 0)
 			return;
@@ -53,20 +55,9 @@ public class DbConnectAction implements IWorkbenchWindowActionDelegate {
 	public void selectionChanged(IAction action, ISelection selection) {
 	}
 
-	/**
-	 * We can use this method to dispose of any system
-	 * resources we previously allocated.
-	 * @see IWorkbenchWindowActionDelegate#dispose
-	 */
-	public void dispose() {
-	}
-
-	/**
-	 * We will cache window object in order to
-	 * be able to provide parent shell for the message dialog.
-	 * @see IWorkbenchWindowActionDelegate#init
-	 */
-	public void init(IWorkbenchWindow window) {
-		this.window = window;
+	@Override
+	public void setActivePart(IAction arg0, IWorkbenchPart arg1) {
+		// TODO Auto-generated method stub
+		
 	}
 }

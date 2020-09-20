@@ -8,6 +8,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
 
 import io.github.junxworks.tools.JunxworksPlugin;
+import io.github.junxworks.tools.actions.CreateMapperAction;
 import io.github.junxworks.tools.actions.CreateMetadataAction;
 import swing2swt.layout.BorderLayout;
 
@@ -17,7 +18,7 @@ import swing2swt.layout.BorderLayout;
  * OR with the extension that matches the expected one (java).
  */
 
-public class MetadataTemplatePage extends WizardPage {
+public class MapperTemplatePage extends WizardPage {
 	Text text;
 
 	/**
@@ -25,17 +26,17 @@ public class MetadataTemplatePage extends WizardPage {
 	 * 
 	 * @param pageName
 	 */
-	public MetadataTemplatePage(ISelection selection) {
+	public MapperTemplatePage(ISelection selection) {
 		super("wizardPage");
-		setTitle("Junx Metadata Template");
-		setDescription("Config metadata generation template");
+		setTitle("Junx Mapper Template");
+		setDescription("Config Mapper Template");
 	}
 
 	/**
 	 * @see IDialogPage#createControl(Composite)
 	 */
 	public void createControl(Composite parent) {
-		String template = JunxworksPlugin.getDefault().getPreferenceStore().getString(CreateMetadataAction.METADATA_CONFIG_ID);
+		String template = JunxworksPlugin.getDefault().getPreferenceStore().getString(CreateMapperAction.MAPPER_CONFIG_ID);
 		Composite composite = new Composite(parent, SWT.NONE);
 		composite.setLayoutData(BorderLayout.NORTH);
 		text = new Text(composite, SWT.BORDER | SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);

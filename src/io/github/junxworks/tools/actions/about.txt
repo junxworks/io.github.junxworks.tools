@@ -1,3 +1,2 @@
-插件采用freemarker模板引擎来生成一系列文件，支持所有freemarker语法。内置变量：package 包路径，Table数据库表模型（表结构是从数据库读取出来的）。
-Table模型参考https://github.com/junxworks/io.github.junxworks.tools/blob/master/src/io/github/junxworks/tools/pojo/db/model/Table.java
-，另外还有Column模型：https://github.com/junxworks/io.github.junxworks.tools/blob/master/src/io/github/junxworks/tools/pojo/db/model/Column.java
+Table metadata see "https://github.com/junxworks/io.github.junxworks.tools/blob/master/src/io/github/junxworks/tools/pojo/db/model/Table.java",
+Column metadata see "https://github.com/junxworks/io.github.junxworks.tools/blob/master/src/io/github/junxworks/tools/pojo/db/model/Column.java"

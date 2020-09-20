@@ -78,8 +78,8 @@ public class CreateObjectPage extends WizardPage {
 	 */
 	public CreateObjectPage(ISelection selection) {
 		super("wizardPage");
-		setTitle("创建Pojo类");
-		setDescription("注意： 类名为必填项，从前端到后端的数据传输对象为Dto对象，\r\n类名以Dto结尾。从后端到前端数据传输对象为Vo对象，类名以Vo结尾。");
+		setTitle("Create Pojo Class");
+		setDescription("Attention: class name is required,DTO object is data transaction object,\r\nclass name suffix must be DTO.VO is view object，class name suffix must be VO.");
 	}
 
 	/**
@@ -90,26 +90,26 @@ public class CreateObjectPage extends WizardPage {
 		container.setLayout(new BorderLayout(0, 0));
 
 		Group group = new Group(container, SWT.NONE);
-		group.setText("Pojo类属性");
+		group.setText("Pojo class attributes");
 		group.setLayout(new GridLayout(4, true));
 		group.setLayoutData(BorderLayout.NORTH);
 
 		Label lblNewLabel = new Label(group, SWT.NONE);
 		lblNewLabel.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
-		lblNewLabel.setText("类名：");
+		lblNewLabel.setText("class name:");
 		lblNewLabel.setAlignment(SWT.RIGHT);
 
 		className = new Text(group, SWT.BORDER);
 		className.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 3, 1));
-		className.setToolTipText("类名必填");
+		className.setToolTipText("class name is required");
 
 		Group group1 = new Group(container, SWT.NONE);
-		group1.setText("Pojo类属性生成");
+		group1.setText("Pojo class fields generation");
 		group1.setLayoutData(BorderLayout.CENTER);
 		group1.setLayout(new GridLayout(4, true));
 
 		Button btnNewButton = new Button(group1, SWT.NONE);
-		btnNewButton.setText("选择元数据类");
+		btnNewButton.setText("choose metadata");
 		btnNewButton.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
 		btnNewButton.addSelectionListener(new SelectionListener() {
 
@@ -192,23 +192,23 @@ public class CreateObjectPage extends WizardPage {
 
 		TableColumn name = new TableColumn(table, SWT.NONE);
 		name.setWidth(100);
-		name.setText("属性名");
+		name.setText("java field name");
 		name.setAlignment(SWT.CENTER);
 		TableColumn column = new TableColumn(table, SWT.NONE);
 		column.setWidth(100);
-		column.setText("数据库字段名");
+		column.setText("DB column name");
 		column.setAlignment(SWT.CENTER);
 		TableColumn type = new TableColumn(table, SWT.NONE);
 		type.setWidth(100);
-		type.setText("数据类型");
+		type.setText("data type");
 		type.setAlignment(SWT.CENTER);
 		TableColumn comment = new TableColumn(table, SWT.NONE);
 		comment.setWidth(150);
-		comment.setText("字段描述");
+		comment.setText("field desc");
 		comment.setAlignment(SWT.CENTER);
 		TableColumn javaType = new TableColumn(table, SWT.NONE);
 		javaType.setWidth(150);
-		javaType.setText("Java类型");
+		javaType.setText("Java Type");
 		javaType.setAlignment(SWT.CENTER);
 		table.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event e) {
@@ -229,7 +229,7 @@ public class CreateObjectPage extends WizardPage {
 
 		String _className = className.getText();
 		if (StringUtil.isNull(_className)) {
-			this.setErrorMessage("实体类名不能为空");
+			this.setErrorMessage("class name can't be null");
 			className.setFocus();
 			return false;
 		} else {
@@ -261,7 +261,7 @@ public class CreateObjectPage extends WizardPage {
 			entity.setColumnList(columList);
 			return true;
 		} else {
-			this.setErrorMessage("请选择属性");
+			this.setErrorMessage("choose at least one field please");
 			className.setFocus();
 			return false;
 		}
@@ -277,7 +277,7 @@ public class CreateObjectPage extends WizardPage {
 			for (IJavaElement e : child) {
 				if (e.getElementType() == IJavaElement.COMPILATION_UNIT) {
 					if ((serviceName + ".java").equals(e.getElementName())) {
-						MessageDialog.openWarning(getShell(), "WARNING", "实体类名：" + serviceName + " 重复！");
+						MessageDialog.openWarning(getShell(), "WARNING", "Duplicated class name :" + serviceName + " ！");
 						return false;
 					}
 				}

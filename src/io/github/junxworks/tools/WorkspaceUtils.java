@@ -1,14 +1,17 @@
 package io.github.junxworks.tools;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 
-import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.IResourceProxy;
-import org.eclipse.core.resources.IResourceProxyVisitor;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
@@ -22,6 +25,8 @@ import org.eclipse.ui.internal.Workbench;
 
 public class WorkspaceUtils {
 
+	private static Map<String,Properties> config=new HashMap<>();
+	
 	/**
 	 * 将工作空间中所有的Java项目返回
 	 * @return
@@ -31,9 +36,9 @@ public class WorkspaceUtils {
 		IProject[] allProjects = root.getProjects();
 		List<IProject> res = new ArrayList<>();
 		for (IProject p : allProjects) {
-			if(p.isOpen()&&p.isAccessible()){
+			if (p.isOpen() && p.isAccessible()) {
 				try {
-					if(p.hasNature("org.eclipse.jdt.core.javanature")){
+					if (p.hasNature("org.eclipse.jdt.core.javanature")) {
 						res.add(p);
 					}
 				} catch (CoreException e) {
@@ -74,6 +79,43 @@ public class WorkspaceUtils {
 		return getCurrentProject().getLocation().toString();
 	}
 
+	public static synchronized Properties getProjectConfig() {
+		String dir= currentProjectDir();
+		if(config.get(dir)!=null) {
+			return config.get(dir);
+		}
+		try {
+			File configF = new File(dir + File.separator + ".junxworks");
+			if (!configF.exists()) {
+				configF.createNewFile();
+			}
+			try (FileInputStream fi = new FileInputStream(configF)) {
+				Properties p = new Properties();
+				p.load(fi);
+				config.put(dir, p);
+				return p;
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static void saveProjectConfig() {
+		String dir= currentProjectDir();
+		try {
+			File configF = new File(dir + File.separator + ".junxworks");
+			if (!configF.exists()) {
+				configF.createNewFile();
+			}
+			try (FileOutputStream fo = new FileOutputStream(configF)) {
+				config.get(dir).save(fo, "");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	/**
 	 * 获取当前选择的路径位置
 	 * @return

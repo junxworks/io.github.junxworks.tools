@@ -63,7 +63,7 @@ public class PojoPage extends WizardPage {
 	public PojoPage(ISelection selection) {
 		super("wizardPage");
 		setTitle("创建实体类");
-		setDescription("编辑实体类\r\n注意：实体类名,数据元为必填项！！");
+		setDescription("编辑实体类\r\n注意:实体类名,数据元为必填项！！");
 	}
 
 	/**
@@ -80,7 +80,7 @@ public class PojoPage extends WizardPage {
 
 		Label lblNewLabel = new Label(group, SWT.NONE);
 		lblNewLabel.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
-		lblNewLabel.setText("实体类名：");
+		lblNewLabel.setText("实体类名:");
 		lblNewLabel.setAlignment(SWT.RIGHT);
 		
 		text_1 = new Text(group, SWT.BORDER);
@@ -89,7 +89,7 @@ public class PojoPage extends WizardPage {
 		
 		Label lblNewLabel2 = new Label(group, SWT.NONE);
 		lblNewLabel2.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
-		lblNewLabel2.setText("数据元：");
+		lblNewLabel2.setText("数据元:");
 		lblNewLabel2.setAlignment(SWT.RIGHT);
 		
 		combo = new Combo(group, SWT.READ_ONLY | SWT.ARROW_DOWN);
@@ -385,7 +385,7 @@ public class PojoPage extends WizardPage {
 			for(IJavaElement e : child){
 				if(e.getElementType() == IJavaElement.COMPILATION_UNIT){
 					if((serviceName + ".java").equals(e.getElementName())){
-						MessageDialog.openWarning(getShell(), "WARNING", "实体类名：" + serviceName + " 重复！");
+						MessageDialog.openWarning(getShell(), "WARNING", "实体类名:" + serviceName + " 重复！");
 						return false;
 					}
 				}

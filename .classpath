@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="lib/mysql-connector-java-8.0.18.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/commons-codec-1.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/commons-httpclient-3.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/commons-lang-2.6.jar"/>
@@ -7,7 +8,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/commons-logging-api-1.0.4.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/dom4j-1.6.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/freemarker-2.3.21.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/mysql-connector-java-5.1.34.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/ojdbc14_g.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/swing2swt.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/swtdesigner.jar"/>

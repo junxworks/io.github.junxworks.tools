@@ -3,17 +3,17 @@ package io.github.junxworks.tools.pojo.db;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.github.junxworks.tools.pojo.db.model.DatabaseElement;
 import io.github.junxworks.tools.pojo.db.model.Table;
 import io.github.junxworks.tools.pojo.db.utils.StringUtil;
 
 public class MySqlDatabase extends DataBseDefault {
 
-	public MySqlDatabase(Connection con) {
-		this.con = con;
+	public MySqlDatabase(DatabaseElement de) {
+		super(de);
 	}
 
 	@Override
@@ -33,8 +33,9 @@ public class MySqlDatabase extends DataBseDefault {
 		List<Table> res = new ArrayList<Table>();
 		PreparedStatement psmt = null;
 		ResultSet rs = null;
+		Connection con = null;
 		try {
-
+			con = getConn();
 			psmt = con.prepareStatement(sql);
 			psmt.setObject(1, schema);
 			rs = psmt.executeQuery();
@@ -44,11 +45,12 @@ public class MySqlDatabase extends DataBseDefault {
 				table.setTableComment(rs.getString("table_comment"));
 				res.add(table);
 			}
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			closeResultSet(rs);
 			closeStatement(psmt);
+			closeConn(con);
 		}
 		return res;
 	}

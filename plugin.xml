@@ -2,62 +2,6 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         point="org.eclipse.ui.commands">
-      <category
-            id="io.github.junxworks.tools.commands.menucategory"
-            name="MenuCategory">
-      </category>
-      <command
-            categoryId="io.github.junxworks.tools.commands.menucategory"
-            id="io.github.junxworks.tools.commands.openConfigCommand"
-            name="OpenConfigCommand">
-      </command>
-   </extension>
-   <extension
-         point="org.eclipse.ui.handlers">
-      <handler
-            class="io.github.junxworks.tools.handlers.OpenConfigHandler"
-            commandId="io.github.junxworks.tools.commands.openConfigCommand">
-      </handler>
-   </extension>
-   <extension
-         point="org.eclipse.ui.bindings">
-      <key
-            commandId="io.github.junxworks.tools.commands.openConfigCommand"
-            contextId="org.eclipse.ui.contexts.window"
-            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
-            sequence="M1+6">
-      </key>
-   </extension>
-   <extension
-         point="org.eclipse.ui.menus">
-      <menuContribution
-            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
-         <toolbar
-               id="io.github.junxworks.tools.toolbars.configToolbar">
-            <command
-                  commandId="io.github.junxworks.tools.commands.openConfigCommand"
-                  icon="icons/config.png"
-                  id="io.github.junxworks.tools.toolbars.openConfigCommand"
-                  tooltip="DB Config">
-            </command>
-         </toolbar>
-      </menuContribution>
-      <menuContribution
-            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
-         <menu
-               id="io.github.junxworks.tools.menus.sampleMenu"
-               label="Sample Menu"
-               mnemonic="M">
-            <command
-                  commandId="io.github.junxworks.tools.commands.sampleCommand"
-                  id="io.github.junxworks.tools.menus.sampleCommand"
-                  mnemonic="S">
-            </command>
-         </menu>
-      </menuContribution>
-   </extension>
-   <extension
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             id="io.github.junxworks.tools.packageContribution"
@@ -65,7 +9,7 @@
          <menu
                icon="icons/ctrl/J.png"
                id="io.github.junxworks.tools.junxmenu"
-               label="junx"
+               label="Junx"
                path="additions">
             <separator
                   name="packageOp">
@@ -85,24 +29,17 @@
                menubarPath="io.github.junxworks.tools.junxmenu/packageOp">
          </action>
          <action
-               class="io.github.junxworks.tools.actions.CreateObjectAction"
-               icon="icons/ctrl/add.png"
-               id="io.github.junxworks.tools.actions.CreateObjectAction"
-               label="Create Pojo Object"
-               menubarPath="io.github.junxworks.tools.junxmenu/packageOp">
-         </action>
-         <action
-               class="io.github.junxworks.tools.actions.MapperTemlateConfigAction"
-               icon="icons/config.png"
-               id="io.github.junxworks.tools.actions.MapperTemlateConfigAction"
-               label="Config Mapper Template"
-               menubarPath="io.github.junxworks.tools.junxmenu/configOp">
-         </action>
-         <action
                class="io.github.junxworks.tools.actions.MetadataTemlateConfigAction"
                icon="icons/config.png"
                id="io.github.junxworks.tools.actions.MetadataTemlateConfigAction"
                label="Config Metadata Template"
+               menubarPath="io.github.junxworks.tools.junxmenu/configOp">
+         </action>
+         <action
+               class="io.github.junxworks.tools.actions.DbConnectAction"
+               icon="icons/config.png"
+               id="io.github.junxworks.tools.actions.DbConnectAction"
+               label="DB Config"
                menubarPath="io.github.junxworks.tools.junxmenu/configOp">
          </action>
           <action
@@ -111,26 +48,6 @@
                id="io.github.junxworks.tools.actions.AboutAction"
                label="Plugin Introduction"
                menubarPath="io.github.junxworks.tools.junxmenu/about">
-         </action>
-      </objectContribution>
-      <objectContribution
-            adaptable="false"
-            id="io.github.junxworks.tools.javaObjectContribution"
-            objectClass="org.eclipse.jdt.core.ICompilationUnit">
-         <menu
-               icon="icons/ctrl/J.png"
-               id="io.github.junxworks.tools.javaObjectMenu"
-               label="Junx">
-            <separator
-                  name="objectOp">
-            </separator>
-         </menu>
-         <action
-               class="io.github.junxworks.tools.actions.UpdateMetadataAction"
-               icon="icons/ctrl/update.png"
-               id="io.github.junxworks.tools.actions.UpdateMetadataAction"
-               label="Update Metadata"
-               menubarPath="io.github.junxworks.tools.javaObjectMenu/objectOp">
          </action>
       </objectContribution>
    </extension>

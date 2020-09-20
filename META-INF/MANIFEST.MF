@@ -21,8 +21,8 @@ Bundle-ClassPath: lib/commons-codec-1.2.jar,
  lib/commons-logging-api-1.0.4.jar,
  lib/dom4j-1.6.1.jar,
  lib/freemarker-2.3.21.jar,
- lib/mysql-connector-java-5.1.34.jar,
  lib/ojdbc14_g.jar,
  lib/swing2swt.jar,
  lib/swtdesigner.jar,
- .
+ .,
+ lib/mysql-connector-java-8.0.18.jar
