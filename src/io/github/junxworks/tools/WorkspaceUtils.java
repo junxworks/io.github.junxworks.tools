@@ -109,7 +109,7 @@ public class WorkspaceUtils {
 				configF.createNewFile();
 			}
 			try (FileOutputStream fo = new FileOutputStream(configF)) {
-				config.get(dir).save(fo, "");
+				config.get(dir).store(fo, "");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
